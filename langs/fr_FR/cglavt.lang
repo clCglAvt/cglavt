@@ -1,0 +1,92 @@
+# Suivi Client
+
+# Suivi Client
+CglAvtListeTitreTot=Journal de suivi client (liste complète)
+CglAvtListeTitrePar=Journal de suivi client (liste des dossiers actifs)
+CglAvtTitreNotes=Bloc Notes
+NvInscription=Nouvelle inscription
+NvLocation=Nouveau contrat
+
+
+CglAvtBtNotesCreer=Nouveau memento
+SC_Creation=Date de saisie
+SC_Creele=Créé le
+SC_MAJ=Traité le 
+SC_Mod=par
+SC_Modifle=Modifié le
+SC_Createur=Intégré par 
+SC_Moi=par
+SC_Modifieur=Modifié par
+SC_Tiers=Tiers
+SC_Secteur=Secteur
+SC_NB=NB
+SC_Dossier=Dossier
+SC_Contact=Contact
+SC_Urgence=Priorité
+SC_Urgent=Prioritaire
+#SC_Action=Action à entreprendre
+SC_Action=Action à entreprendre
+SC_Actionle=Sollicitation du client et réponses apportées
+SC_Origine=Origine du contact
+SC_Tel=Téléphone
+SC_Mail=Mail
+SC_TitreFiche=Echanges avec le client
+SC_Description=Description des échanges
+SC_Priorite=Statut
+SC_Type=Type Dossier
+Client=Client
+Fournisseur=Fournisseur
+SC_Interlocuteur=Interlocuteur
+listtotal=Liste complète
+listrest=Liste dossiers actifs
+SC_Aide_Priorite=%s
+ConfEffacerEchange=Supprimer l'échange suivant
+
+# Dictionnaires Suivi Client�le
+DictionarySecteur=Secteur
+DictionaryPriorite=Statut des dossiers client
+DictTablTypeDossier=Liste des type des dossiers client
+DictTablPriorite=Liste des statuts des dossiers client
+DictTablSecteur=Liste des secteurs d'activités
+
+# dictionnaire mail
+TiSendLocation=Location - Mail
+TiSendInscription=Inscription - Mail
+TiSendReservation=Réservation - Mail
+TiCopieMailenSms=Copie d'un modèle Mail en Modèle SMS
+BtCopieMailenSms=Copier
+
+TiSendSMSLocation=Location - SMS
+TiSendSMSInscription=Inscription - SMS
+TiSendSMSReservation=Réservation - SMS
+
+TiSendStripe=Stripe - Mail
+TiSendSMSStripe=Stripe - SMS
+# Dolibarr language file - fr_FR - bills
+
+AmountOfBillsByMonth=Montant de factures par mois (TTC)
+PaymentByChequeOrderedToCOM=Règlement  par chèque à l'ordre de %s envoyé à
+ImmatriculationOperateurLib=Immatriculation Opérateur de tourisme: IM 030140002  
+CautionOperateurLib=Caution:    Groupama Caution
+AssuranceOperateurLib=Assurance: MMA Assurance 72000 Le Mans
+TotalTTCSpec=Total TTC (*)
+VATCommissionnement=(*)assujetti à la TVA sur le montant de la commission, calculée sur demande.
+VATMarge=(*)assujetti à la TVA sur la marge selon l'article 226-1-e du CGI
+VATCommTVA=(*)les encadremants sont assujettis à la TVA sur le montant de la commission, calculée après l'exécution de l'activité.
+VATCommCompteMoniteur=Cette facture est établie au nom et pour le compte du ou des moniteurs cités.
+VATCommPropalCompteMoniteur=Ce devis est établi au nom et pour le compte du ou des moniteurs intervenants.
+VATCommCompteMoniteurTVA=Les encadrements du ou des moniteurs cités sont facturés en leur nom et pour leur compte.
+PDFCrabeCommissionnement=Modèle de facture PDF pour le commissionnement (modèle CigaleAventure)
+PDFCrabeComTVADescription=Modèle de facture PDF pour le commissionnement et le régime classique
+
+# accent
+Accent=Etes:Êtes
+Accent=s�r=sûr
+Accent=cl�tur�e:clôturée
+Accent=etre:être 
+Accent= o�:où
+Accent=�:à
+Accent �: è
+
+
+

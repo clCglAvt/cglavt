@@ -1,0 +1,47 @@
+
+#Module Location
+
+Module875140Name=Location
+Module875140Desc=Module Locations matériel
+Permission875141=Saisir des contracts de location
+Permission875142=Voir les contracts de location
+
+
+cgllocation=Location
+CglLocation=Location
+DescLoc=Description du module Locations matériel
+# Menu
+TitreContrat=Contrat
+LstContrat=Liste des contrats
+ListeMaterielLoue=Liste du matériel loué
+ListeCaution=Liste des locations caution détenue par CAV
+LstReservation=Etat d'avancement des réservations
+NvContrat=Nouvelle location
+Retour=Retour
+TitreServiceRando=Matériel et Rando
+LstServices=Matériel loué
+LstServicesGratuits=Matériel offert
+NvService=Nouveau Matériel
+LstRando=Liste des randonnées
+NvRando=Nouvelle randonnée
+
+# Contrat
+CglLocTitre=Contrat de location
+CglLocTiersTitre=Locataire
+CglLocTiersNom=Nom
+CglLocTiersPrenom=Prénom
+CglLocTiersAdresse=Adresse
+CglLocTiersCPVille=Ville
+CglLocTiersTel=Téléphone
+CglLocTiersMail=Mail
+
+
+# Liste Contrat
+# accent
+Accent=Etes:Êtes
+Accent=s�r=sûr
+Accent=cl�tur�e:clôturée
+Accent=etre:être 
+Accent= o�:où
+Accent=�:à
+Accent �: è
