@@ -33,6 +33,7 @@
  *              version 2 dec 2018 - adaptation version Dolibarr 8.0.3 
  *				version 2.6 avril 2021 - migration vers Dolibarr 12.0.5
  *				version 2.6.1 mars 2022 - migration vers Dolibarr 12.0.5
+ *				version 2.9 - Migration V17
  
  */
 include_once DOL_DOCUMENT_ROOT .'/core/modules/DolibarrModules.class.php';
@@ -68,7 +69,7 @@ class ModCglAvt extends DolibarrModules
 		// Module description, used if translation string 'ModuleXXXDesc' not found (where XXX is value of numeric property 'numero' of module)
 	$this->description = "Personnalisation de Dolibarr pour CigaleAventure";
 		// Possible values for version are: 'development', 'experimental', 'dolibarr' or version
-	$this->version = '2.6.1';
+	$this->version = '2.9';
 		// Key used in llx_const table to save module status enabled/disabled (where MYMODULE is value of property name of module in uppercase)
 	$this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);
 		// Where to store the module in setup page (0=common,1=interface,2=others,3=very specific)
@@ -144,15 +145,52 @@ class ModCglAvt extends DolibarrModules
 		// 'contact'          to add a tab in contact view
 		// 'categories_x'	  to add a tab in category view (replace 'x' by type of category (0=product, 1=supplier, 2=customer, 3=member)
  		$this->tabs = array ();
-        // Dictionnaries
+        // Dictionaries
 		
 	    if (! isset($conf->cglavt->enabled))
         {
         	$conf->cglavt=new stdClass();
         	$conf->cglavt->enabled=0;
         }
-		$this->dictionnaries=array();
- 		
+		$this->dictionaries=array();
+ 		$this->dictionaries=array(
+            'langs' => 'cglinscription@cglinscription',
+            'tabname'=>array(
+					MAIN_DB_PREFIX."c_paiementCAV",
+					),
+		// List of tables we want to see into dictonnary editor
+            'tablib'=>array(
+					"DictionaryPaymentModes",
+					),				// Label of tables
+            'tabsql'=>array(
+					'SELECT c.id    as rowid, c.code, c.libelle, c.type, c.active, c.accountancy_code, c.fl_regroup , c.fl_regroupneg, c.fk_cpt_bq  FROM '.MAIN_DB_PREFIX.'c_paiement AS c'
+					),	// Request to select fields
+            'tabsqlsort'=>array(
+					"code ASC",
+					),			// Sort order
+            'tabfield'=>array( 
+					"code,libelle,type,accountancy_code,fl_regroup,fl_regroupneg,fk_cpt_bq"					
+					),		// List of fields (result of select to show dictionnary)
+            'tabfieldvalue'=>array(
+					"code,libelle,type,accountancy_code,fl_regroup,fl_regroupneg,fk_cpt_bq"	
+					),	// List of fields (list of fields to edit a record)
+            'tabfieldinsert'=>array(
+					"code,libelle,type,accountancy_code,fl_regroup,fl_regroupneg,fk_cpt_bq"	
+					), // List of fields (list of fields for insert)
+            'tabrowid'=>array(
+					"id"
+					),	// Name of columns with primary key (try to always name it 'rowid')
+            'tabcond'=>array(
+					(!empty($conf->commande->enabled) || !empty($conf->propal->enabled) || isModEnabled('facture') || (!empty($conf->fournisseur->enabled) && empty($conf->global->MAIN_USE_NEW_SUPPLIERMOD)) || !empty($conf->supplier_invoice->enabled) || !empty($conf->supplier_order->enabled))
+					),	// Condition to show each dictionnary
+			'tabhelp' => array (
+					array('code'=>$langs->trans("EnterAnyCode"),
+					'fl_regroup'=>$langs->trans("FlRegroup"),
+					'fl_regroupneg'=>$langs->trans("FlRegroupNeg"),
+					'fk_cpt_bq'=>$langs->trans("Fk_cpt_bq")
+					))
+        );
+
         // Boxes
 		// Add here list of php file(s) stored in core/boxes that contains class to show a box.
         $this->boxes = array();			// List of boxes

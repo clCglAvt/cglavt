@@ -5,6 +5,7 @@
  * Version CAV - 2.8 - hiver 2023
  *					 			  - Installation popup Modif/creation Suivi pour Inscription/Location
  *								   - fiabilisation des foreach
+ * Version CAV - 2.9 - automne 2023 - Montéee de version V17 - ajout argument à DolEditor->Create et editfield
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -151,7 +152,7 @@ class FormCglFonctionCommune
 		$rows=ROWS_5;
 		$cols='90%';
 		$doleditor = new DolEditor($htmlname, $value, '', $height, $toolbarname, $toolbarlocation,  $toolbarstartexpanded, $uselocalbrowser, $okforextendededitor, $rows, $cols);
-		$ret.=$doleditor->Create(1);
+		$ret.=$doleditor->Create(1, '', true, '', '', $moreparam, '');
 		$ret.='</td>';
 /*		$ret.='<td align="left" '.$color.'>';
 //		$ret.='<input type="submit" class="button" name="modify" value="'.$langs->trans("Modify").'">';
@@ -164,9 +165,13 @@ class FormCglFonctionCommune
 		
         return $ret;
     } // editfieldval
+
+	/*
+	* Obsolette - voir Affiche_zone_texte
+	*/
 	function Affiche_zone_texte1($htmlname, $desc = '', $id = '', $nbcol=150, $color, $checkeditor = false)
 	{
-		global $conf, $user;
+		global $conf, $user, $event_filtre_car_saisie;
 
 		$out = "";
 		// copy de core/tpl/notes.tpl.php
@@ -183,7 +188,8 @@ class FormCglFonctionCommune
 		$typeofdata='ckeditor:dolibarr_notes:100%:10::1:3:'.$nbcol;
 
 		$out .=  '<!-- BEGIN PHP TEMPLATE NOTES -->';
-		$out .= '	<div class="table-val-border-row" style="width:100%">'.$this->editfieldval('', $htmlname, $desc, $id, $permission, $typeofdata, $desc, null, null, '', $color).'</div>';
+		$out .= '	<div class="table-val-border-row" style="width:100%">'.$this->editfieldval('', $htmlname, $desc, $id, $permission, $typeofdata, $desc, null, null, $event_filtre_car_saisie, $color).'</div>';
+
 		$conf->fckeditor->enabled = $saveconffckeditorenabled;
 
 	}//Affiche_zone_texte1
@@ -202,7 +208,8 @@ class FormCglFonctionCommune
 
 	function Affiche_zone_texte($htmlname, $desc = '', $id = '', $nbcol=150, $color, $checkeditor = false, $rows = 5 )// ROWS_5
 	{
-		global $conf, $user;
+		global $conf, $user, $event_filtre_car_saisie;
+
 		$out = "";
 		// copy de core/tpl/notes.tpl.php
 		$module = 'societe->';
@@ -218,7 +225,7 @@ class FormCglFonctionCommune
 		//$typeofdata='ckeditor:dolibarr_notes:100%:10::1:3:'.$nbcol;
 		$typeofdata .= ':'.$nbcol;
 		$out .= '<!-- BEGIN PHP TEMPLATE NOTES -->';
-		$out .= '	<div class="table-val-border-row" style="width:100%">'.$this->editfieldval('', $htmlname, $desc, $id, $permission, $typeofdata, $desc, null, null, '', $color, $rows).'</div>';
+		$out .= '	<div class="table-val-border-row" style="width:100%">'.$this->editfieldval('', $htmlname, $desc, $id, $permission, $typeofdata, $desc, null, null, $event_filtre_car_saisie, $color, $rows).'</div>';
 		$conf->fckeditor->enabled = $saveconffckeditorenabled;
 
 	return $out;

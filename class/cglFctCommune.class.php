@@ -8,7 +8,8 @@
  *								   - ajout d'un argument optionel à Affiche_zone_texte et editfieldval
  *					 			  - Installation popup Modif/creation Suivi pour Inscription/Location
  *								  -  methode  select_
-
+ * Version CAV - 2.9 - automne 2023 - Montéee de version V17 - ajout argument à DolEditor->Create et editfield
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -411,7 +412,7 @@ class CglFonctionCommune
 		//$rows=ROWS_5;
 		$cols='90%';
 		$doleditor = new DolEditor($htmlname, $value, '', $height, $toolbarname, $toolbarlocation,  $toolbarstartexpanded, $uselocalbrowser, $okforextendededitor, $rows, $cols);
-		$ret.=$doleditor->Create(1);
+		$ret.=$doleditor->Create(1, '', true, '', '', $moreparam, '');
 		$ret.='</td>';
 /*		$ret.='<td align="left" '.$color.'>';
 //		$ret.='<input type="submit" class="button" name="modify" value="'.$langs->trans("Modify").'">';
@@ -426,10 +427,12 @@ class CglFonctionCommune
     } // editfieldval
 
 
-	function Affiche_zone_texte($htmlname, $desc = '', $id = '', $nbcol=150, $color, $checkeditor = false, $rows = 5 )// ROWS_5
+	/*
+	* Obsolette - voir Affiche_zone_texte de  html.cglFctCommun.class.php
+	*/
+	function Affiche_zone_texte1($htmlname, $desc = '', $id = '', $nbcol=150, $color, $checkeditor = false, $rows = 5 )// ROWS_5
 	{
-		global $conf, $user;
-
+		global $conf, $user, $event_filtre_car_saisie;
 		// copy de core/tpl/notes.tpl.php
 		$module = 'societe->';
 		$form1 = new Form($this->db);
@@ -444,7 +447,9 @@ class CglFonctionCommune
 		//$typeofdata='ckeditor:dolibarr_notes:100%:10::1:3:'.$nbcol;
 		$typeofdata .= ':'.$nbcol;
 		print '<!-- BEGIN PHP TEMPLATE NOTES -->';
-		print '	<div class="table-val-border-row" style="width:100%">'.$this->editfieldval('', $htmlname, $desc, $id, $permission, $typeofdata, $desc, null, null, '', $color, $rows).'</div>';
+		print '	<div class="table-val-border-row" style="width:100%">';
+		print $this->editfieldval('', $htmlname, $desc, $id, $permission, $typeofdata, $desc, null, null, $event_filtre_car_saisie, $color, $rows);
+		print '</div>';
 		$conf->fckeditor->enabled = $saveconffckeditorenabled;
 
 	}//Affiche_zone_texte
